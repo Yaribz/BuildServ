@@ -1,0 +1,25 @@
+[scons]
+GML:gml=true
+win64:optimize=no
+gmlsim:gml=true gmlsim=yes
+default:gml=false debug=yes debugdefines=no optimize=yes
+cleantest:use_nedmalloc=no optimize=yes debugdefines=yes
+defaultsafe:gml=false use_nedmalloc=no debug=yes optimize=yes debugdefines=no
+syncdebug:gml=false debug=1 optimize=yes debugdefines=yes syncdebug=1 synctrace=1
+[cmake]
+no_new_cpp_ais_4:AI_EXCLUDE_REGEX="Cpp*|HughAI" CMAKE_BUILD_TYPE="RELWITHDEBINFO"
+debug2:CMAKE_BUILD_TYPE=DEBUG2
+noe323ai:AI_EXCLUDE_REGEX="E323AI"
+no_new_cpp_ais_syncdebug:AI_EXCLUDE_REGEX="Cpp*|HughAI" CMAKE_BUILD_TYPE="DEBUG2" TRACE_SYNC="true" SYNCDEBUG="true"
+MT:USE_GML_SIM=true CMAKE_BUILD_TYPE=RELWITHDEBINFO USE_GML=true
+MT_2:USE_GML_SIM="true" CMAKE_BUILD_TYPE="RELWITHDEBINFO" USE_GML="true"
+aiExcl_1:AI_EXCLUDE_REGEX="Cpp*|HughAI|Null*JavaAI"
+noais:AI_TYPES="NONE"
+MTDEBUG:USE_GML_SIM=true CMAKE_BUILD_TYPE=RELWITHDEBINFO USE_GML_DEBUG=true USE_GML=true
+default:CMAKE_BUILD_TYPE=RELWITHDEBINFO
+syncdebug:CMAKE_BUILD_TYPE=DEBUG2 TRACE_SYNC=true SYNCDEBUG=true
+profiling:CMAKE_BUILD_TYPE=PROFILE
+syncdebug2:CMAKE_BUILD_TYPE=DEBUG2 SYNCDEBUG=true
+no_new_cpp_ais:AI_EXCLUDE_REGEX="Cpp*|HughAI"
+no_new_cpp_ais_2:AI_EXCLUDE_REGEX="Cpp*|HughAI" CMAKE_BUILD_TYPE="RELWITHDEBINFO"
+no_new_cpp_ais_3:AI_EXCLUDE_REGEX="Cpp*|HughAI" CMAKE_BUILD_TYPE="RELWITHDEBINFO"

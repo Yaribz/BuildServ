@@ -1,0 +1,4 @@
+installer:spring_0.81.2.1-1249-gd6bbc85.exe
+date:2010-06-30 18:00:40 +0200
+rev:0.81.2.1-1249-gd6bbc85
+author:zerver

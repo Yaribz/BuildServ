@@ -1,0 +1,65 @@
+
+[defineProfile]
+!defineProfile <buildSystem> <profileName> <configFlag>=<value> [<configFlag>=<value> [...]] - (re)define a build profile with its associated configure flags (only changes from defaut profile)
+"!defineProfile scons GML gml=true" defines a build profile named "GML" with same configure flags as default profile, except for the gml flag which will be set to "true"
+
+[disable]
+!disable - disable rebuild commands
+
+[enable]
+!enable - enable rebuild commands
+
+[help]
+!help [<command>] - lists allowed commands (print examples for command <command> if <command> is specified)
+"!help" lists all commands
+"!help help" print examples for command help
+
+[helpall]
+!helpall - lists all commands
+
+[history]
+!history [rev=<revision>|HEAD] [vcs=git|svn] - shows 10 last commits, starting at <revision> or HEAD if not specified
+
+[listProfiles]
+!listProfiles - lists build profiles with their associated configure flags
+
+[notify]
+!notify - notify you with a private message when current rebuild and/or translate processes finish
+
+[pending]
+!pending - shows pending commit(s) for next rebuild
+
+[quit]
+!quit - forces BuildServ to quit
+
+[rebuild]
+!rebuild [toolchain=mingw32|mingw32_421|tdm|tdm433|tdm432|mingw64|native] [rev=<revision>|HEAD|CURRENT] [upload=yes|no|partial] [branch=<branch>] [tag=<tag>] [profile=<profile>] [source=yes|no] [buildsys=scons|cmake] [vcs=git|svn] [clean=yes|no] [notify=yes|no] - updates repository, rebuilds spring binaries, and uploads them to http://planetspring.free.fr/spring
+All parameters are optional and can be put in any order:
+_ toolchain: toolchain used to build binaries (default value: "mingw32")
+_ rev: revision to build (default value: "HEAD" => latest commit)
+_ upload: tells if binaries must be uploaded (default value: "yes" if sys="windows", "no" else)
+_ branch: branch to build (default value: undefined => trunk/master)
+_ tag: tag to build (default value: undefined => trunk/master)
+_ profile: configure flags profile to use (default value: "default")
+_ source: tells if source packages must be generated (default value: "no")
+_ buildsys: build system to use (default value: "cmake")
+_ vcs: version control system (default value: "svn" if rev parameter is a number < 10000, else "git")
+_ clean: tells if repository must be cleaned before build process (default value: "no")
+_ notify: tells if BuildServ must notify you with a private message when rebuild process is finished
+"!rebuild" <=> "!rebuild toolchain=mingw32 rev=HEAD upload=yes profile=default source=no buildsys=cmake vcs=git clean=no"
+"!rebuild toolchain=native" <=> "!rebuild toolchain=native rev=HEAD upload=no profile=default source=no buildsys=cmake vcs=git clean=no"
+
+[restart]
+!restart - restarts BuildServ
+
+[setUploadRate]
+!setUploadRate <uploadRate> - sets the upload speed limit
+"!setUploadRate 100" - limits BuildServ uploads to 100KB/s
+
+[translate]
+!translate file=<URL> [auto=yes|no] [rev=<revision>|LAST] [branch=<branch>] [tag=<tag>] [profile=<profile>] [buildsys=scons|cmake] [vcs=git|svn] [links=yes|no] [notify=yes|no] - translates stack trace pointed by <URL> and uploads the result to http://planetspring.free.fr/spring/stacktrace
+"!translate file=http://pastebin.com/a1b2c3d4e buildsys=scons auto=yes" translates stacktrace using debug data built with scons and autodetecting other translate parameters from infolog if possible
+"!translate file=http://pastebin.com/a1b2c3d4e tag=spring_0.77b3 auto=no" translates stacktrace using debug data of tag spring_0.77b3, and keep other translate parameters to their default values (do no apply autodetected values)
+
+[version]
+!version - requests versions of all BuildServ components
